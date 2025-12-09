@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Yêu Thích - Tour Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-plane-departure me-2"></i>Tour Manager
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Trang chủ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="favorites.html">
+                            <i class="fas fa-heart me-1"></i>Yêu thích
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.html">
+                            <i class="fas fa-cog me-1"></i>Quản lý
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="userInfo"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt me-1"></i>Đăng xuất
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">
+                <i class="fas fa-heart me-3"></i>Tour Yêu Thích
+            </h1>
+            <p class="text-muted mb-0">Danh sách các tour bạn đã lưu</p>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row" id="favoriteList"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/favorites.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - Tour Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/auth.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="auth-left">
+                <div class="auth-left-content">
+                    <h1>Translate Tours</h1>
+                    <p>Khám phá những điểm đến tuyệt vời<br>và tạo những kỷ niệm đáng nhớ</p>
+                </div>
+            </div>
+            
+            <div class="auth-right">
+                <div class="auth-header">
+                    <div class="bird-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <h2>Welcome</h2>
+                </div>
+                
+                <div class="login-body">
+                    <div id="alertContainer"></div>
+                    
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="email" class="form-control" id="loginEmail" placeholder="Your username" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" id="loginPassword" placeholder="Your password" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">
+                                Remember password
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-login w-100">
+                            Login
+                        </button>
+                    </form>
+                    
+                    <div class="divider">
+                        <span class="text-muted">or</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <div class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="social-btn apple">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                    </div>
+                    
+                    <p class="text-center mt-4 mb-0">
+                        Don't have an account? 
+                        <a href="register.html" class="register-link">Sign up</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <p class="text-center text-white mt-4">
+            <small>© 2024 Tour Manager. All rights reserved.</small>
+        </p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/login.js"></script>
+</body>

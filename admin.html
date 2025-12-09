@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tour - Tour Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
+   
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-plane-departure me-2"></i>Tour Manager
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Trang chủ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html">
+                            <i class="fas fa-heart me-1"></i>Yêu thích
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin.html">
+                            <i class="fas fa-cog me-1"></i>Quản lý
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="userInfo">
+                            <i class="fas fa-user me-1"></i><span id="adminName"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt me-1"></i>Đăng xuất
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">
+                <i class="fas fa-cog me-3"></i>Quản Lý Tour Du Lịch
+            </h1>
+            <p class="text-muted mb-0">Trang quản trị hệ thống</p>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <div class="stats-card primary">
+                    <div class="stats-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="stats-number" id="totalTours">0</div>
+                    <div class="stats-label">Tổng số Tour</div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stats-card success">
+                    <div class="stats-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stats-number" id="activeTours">0</div>
+                    <div class="stats-label">Tour Đang Hoạt Động</div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stats-card warning">
+                    <div class="stats-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stats-number" id="totalBookings">247</div>
+                    <div class="stats-label">Lượt Đặt Tour</div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stats-card danger">
+                    <div class="stats-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stats-number" id="totalFavorites">0</div>
+                    <div class="stats-label">Lượt Yêu Thích</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tours Table -->
+    <div class="container mb-5">
+        <div class="table-section">
+            <div class="section-header">
+                <h3 class="section-title">
+                    <i class="fas fa-list me-2"></i>Danh Sách Tour
+                </h3>
+                <button class="btn btn-add" data-bs-toggle="modal" data-bs-target="#tourModal" id="addTourBtn">
+                    <i class="fas fa-plus me-2"></i>Thêm Tour Mới
+                </button>
+            </div>
+            
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" class="form-control" id="searchTour" placeholder="Tìm kiếm tour...">
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th width="5%">ID</th>
+                            <th width="10%">Hình ảnh</th>
+                            <th width="25%">Tên Tour</th>
+                            <th width="15%">Địa điểm</th>
+                            <th width="12%">Thời lượng</th>
+                            <th width="13%">Giá</th>
+                            <th width="20%" class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tourTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tour Modal -->
+    <div class="modal fade" id="tourModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tourModalTitle">
+                        <i class="fas fa-plus-circle me-2"></i>Thêm Tour Mới
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="tourForm">
+                        <input type="hidden" id="tourId">
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-tag me-1"></i>Tên Tour
+                                </label>
+                                <input type="text" class="form-control" id="tourName" required placeholder="Ví dụ: Du lịch Hạ Long">
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-map-marker-alt me-1"></i>Địa điểm
+                                </label>
+                                <input type="text" class="form-control" id="tourLocation" required placeholder="Ví dụ: Quảng Ninh">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-clock me-1"></i>Thời lượng
+                                </label>
+                                <input type="text" class="form-control" id="tourDuration" required placeholder="Ví dụ: 3 ngày 2 đêm">
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-dollar-sign me-1"></i>Giá (VNĐ)
+                                </label>
+                                <input type="number" class="form-control" id="tourPrice" required placeholder="3500000">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-map me-1"></i>Khu vực
+                                </label>
+                                <select class="form-select" id="tourRegion" required>
+                                    <option value="">Chọn khu vực</option>
+                                    <option value="mien-bac">Miền Bắc</option>
+                                    <option value="mien-trung">Miền Trung</option>
+                                    <option value="mien-nam">Miền Nam</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-star me-1"></i>Badge (Tùy chọn)
+                                </label>
+                                <input type="text" class="form-control" id="tourBadge" placeholder="Hot, New, Sale...">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-image me-1"></i>URL Hình ảnh
+                            </label>
+                            <input type="url" class="form-control" id="tourImage" required placeholder="https://example.com/image.jpg">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-align-left me-1"></i>Mô tả
+                            </label>
+                            <textarea class="form-control" id="tourDescription" rows="3" required placeholder="Mô tả chi tiết về tour..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Hủy
+                    </button>
+                    <button type="button" class="btn btn-save" id="saveTourBtn">
+                        <i class="fas fa-save me-2"></i>Lưu Tour
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast hide" role="alert">
+            <div class="toast-header">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <strong class="me-auto">Thông báo</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toastMessage"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

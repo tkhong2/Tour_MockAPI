@@ -1,0 +1,348 @@
+:root {
+    --primary: #5191FA;
+    --secondary: #3D5AFE;
+    --accent: #FF6B6B;
+    --dark: #2C3E50;
+    --light: #F8F9FA;
+    --success: #4CAF50;
+    --danger: #FF5252;
+    --warning: #FFC107;
+    --text-dark: #1a1a1a;
+    --text-light: #6c757d;
+}
+
+body {
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    background: #F8F9FA;
+    color: var(--text-dark);
+}
+
+/* Navbar */
+.navbar {
+    background: #FFFFFF !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    padding: 1.2rem 0;
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark) !important;
+    letter-spacing: -0.5px;
+}
+
+.navbar-brand i {
+    color: var(--primary);
+    margin-right: 8px;
+}
+
+.nav-link {
+    color: var(--text-dark) !important;
+    margin: 0 12px;
+    padding: 8px 0 !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary) !important;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--primary) !important;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, rgba(81, 145, 250, 0.1) 0%, rgba(61, 90, 254, 0.05) 100%);
+    padding: 40px 0;
+    margin-bottom: 40px;
+}
+
+.page-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.page-title i {
+    color: var(--primary);
+    margin-right: 12px;
+}
+
+/* Stats Cards */
+.stats-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+    border-left: 4px solid #ddd;
+}
+
+.stats-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.stats-card.primary { border-left-color: var(--primary); }
+.stats-card.success { border-left-color: var(--success); }
+.stats-card.warning { border-left-color: var(--warning); }
+.stats-card.danger { border-left-color: var(--danger); }
+
+.stats-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.stats-card.primary .stats-icon { color: var(--primary); }
+.stats-card.success .stats-icon { color: var(--success); }
+.stats-card.warning .stats-icon { color: var(--warning); }
+.stats-card.danger .stats-icon { color: var(--danger); }
+
+.stats-number {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 5px 0;
+    color: var(--dark);
+}
+
+.stats-label {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+/* Table Section */
+.table-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.btn-add {
+    background: var(--success);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-add:hover {
+    background: #3d9970;
+}
+
+/* Table Styles */
+.table {
+    margin: 0;
+}
+
+.table thead {
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table thead th {
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #495057;
+}
+
+.table tbody tr {
+    transition: background 0.2s;
+}
+
+.table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.table td {
+    padding: 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.tour-img-small {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.btn-action {
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: none;
+    margin: 0 2px;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+}
+
+.btn-edit {
+    background: var(--warning);
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #e0a800;
+}
+
+.btn-delete {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #dc3545;
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    background: var(--primary);
+    color: white;
+    border-radius: 8px 8px 0 0;
+    padding: 16px 20px;
+    border-bottom: none;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.btn-close {
+    filter: brightness(0) invert(1);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.form-control, .form-select {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    padding: 8px 12px;
+    transition: border-color 0.2s;
+    font-size: 0.95rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.15rem rgba(81, 145, 250, 0.15);
+}
+
+.btn-save {
+    background: var(--primary);
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-save:hover {
+    background: var(--secondary);
+}
+
+.btn-cancel {
+    background: #6c757d;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-cancel:hover {
+    background: #5a6268;
+}
+
+/* Price Badge */
+.price-badge {
+    background: var(--success);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Search Box */
+.search-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    padding-left: 40px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+}
+
+.search-box i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
