@@ -59,49 +59,6 @@ async function loadTours() {
 }
 
 async function initializeDefaultTours() {
-    // const defaultTours = [
-    //     {
-    //         name: "Du lịch Hạ Long 3N2Đ",
-    //         location: "Quảng Ninh",
-    //         region: "mien-bac",
-    //         duration: "3 ngày 2 đêm",
-    //         price: 3500000,
-    //         image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=400",
-    //         description: "Khám phá vịnh Hạ Long tuyệt đẹp với hang động kỳ vĩ",
-    //         badge: "Hot"
-    //     },
-    //     {
-    //         name: "Phú Quốc Resort 4N3Đ",
-    //         location: "Kiên Giang",
-    //         region: "mien-nam",
-    //         duration: "4 ngày 3 đêm",
-    //         price: 5500000,
-    //         image: "https://images.unsplash.com/photo-1583737209087-d6e1b0b92a97?w=400",
-    //         description: "Nghỉ dưỡng tại đảo ngọc Phú Quốc",
-    //         badge: "Sale"
-    //     },
-    //     {
-    //         name: "Sapa Mùa Lúa Chín 2N1Đ",
-    //         location: "Lào Cai",
-    //         region: "mien-bac",
-    //         duration: "2 ngày 1 đêm",
-    //         price: 2500000,
-    //         image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=400",
-    //         description: "Chiêm ngưỡng ruộng bậc thang Sapa mùa lúa chín",
-    //         badge: "New"
-    //     },
-    //     {
-    //         name: "Đà Nẵng - Hội An 3N2Đ",
-    //         location: "Đà Nẵng",
-    //         region: "mien-trung",
-    //         duration: "3 ngày 2 đêm",
-    //         price: 4200000,
-    //         image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=400",
-    //         description: "Khám phá thành phố đáng sống và phố cổ Hội An",
-    //         badge: ""
-    //     }
-    // ];
-
     for (const tour of defaultTours) {
         await $.ajax({
             url: `${API_URL}/tours`,
