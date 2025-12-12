@@ -82,7 +82,12 @@
                 <div class="auth-right">
                     <h1>Login</h1>
                     <form action="" id="auth">
-                        
+                        <div class="mb-3">
+                            <div class="input-group">
+                                
+                                <input type="text" placeholder="Fullname" id="fullname" class="input-control">
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <div class="input-group">
                                 
@@ -97,12 +102,19 @@
                                 <input type="password" placeholder="Password" id="password" class="input-control">
                             </div>
                         </div>
-                        
-                        <button class="btn">Login</button>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <!-- <div class="icon">
+                                    <i class="fa-solid fa-lock"></i>
+                                </div> -->
+                                <input type="password" placeholder="Confirm password" id="confirmPassword" class="input-control">
+                            </div>
+                        </div>
+                        <button class="btn">Register</button>
                     </form>
                     <div class="text-center">
-                        <span class="text-muted">You don't have account?</span>
-                        <a href="regsister.html" class="text-primary text-decoration-none">Regsister Now</a>
+                        <span class="text-muted">You have account?</span>
+                        <a href="login.html" class="text-primary text-decoration-none">Login Now</a>
                     </div>
                 </div>
             </div>
@@ -126,26 +138,37 @@
             const URL_API = "https://6937071cf8dc350aff3320d0.mockapi.io"
             $("#auth").on("submit",async function(e){
                 e.preventDefault()
-
+                const name = $("#fullname").val()
                 const email = $("#email").val()
                 const password = $("#password").val()
-               
-                if( !email || !password){
+                const confirmPassword = $("#confirmPassword").val()
+                if(password !== confirmPassword){
+                    alert("Password doesn't match")
+                    return
+                }
+                if(!name || !email || !password){
                     alert("Please fill in all infor")
                     return
                 }
                 try{
                     const users = await $.get(`${URL_API}/users`)
-                    const exitingUser = users.find(u => u.email === email && u.password === password)
+                    const exitingUser = users.find(u => u.email === email)
                     if(exitingUser){
-                        alert("Login succesfully")
-                        localStorage.setItem("currentUser", JSON.stringify(exitingUser))
-                        window.location.href= "index.html"
-                        
+                        alert("Email exiting")
+                        return
                     }
-                    else{
-                        alert("Email or password invalid")
-                    }
+                    const res = await $.ajax({
+                        url:   `${URL_API}/users`,
+                        method: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({
+                            name:name,
+                            email:email,
+                            password:password
+                        })
+                    })
+                    alert("Register succesfully.")
+                    window.location.href = "login.html"
                 }catch(e){
                     console.error(e)
                 }

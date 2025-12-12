@@ -1,144 +1,228 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chủ - Tour Manager</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
 </head>
+<script>
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    if(!currentUser){
+        window.location.href = "login.html";
+    }
+</script>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar bg-light navbar-light navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-plane-departure me-2"></i>Tour Manager
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a href="#" class="navbar-brand">PhucLong</a>
+            <button class="navbar-toggler" type="button" data-bs-targer="#navbarNav" data-bs-toggle="collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
-                            <i class="fas fa-home me-1"></i>Trang chủ
-                        </a>
+                <ul class="navbar-nav ms-auto ms-auto">
+                    <li class="nav-item m-3">
+                        <a href="#" class="nav-link active">Trang chủ</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="favorites.html">
-                            <i class="fas fa-heart me-1"></i>Yêu thích
-                            <span class="badge bg-danger" id="favCount">0</span>
-                        </a>
+                    <li class="nav-item m-3">
+                        <a href="#" class="nav-link">About</a>
                     </li>
-                    <li class="nav-item" id="adminMenu" style="display: none;"></li>
-                        <a class="nav-link" href="admin.html">
-                            <i class="fas fa-cog me-1"></i>Quản lý
-                        </a>
+                    <li class="nav-item m-3 ">
+                        <a href="#" class="nav-link">Sản phẩm</a>
                     </li>
-                    <li class="nav-item" id="loginMenu">
-                        <a class="nav-link" href="login.html">
-                            <i class="fas fa-sign-in-alt me-1"></i>Đăng nhập
-                        </a>
+                    <li class="nav-item me-3 align-content-center">
+                        <span class="navbar-text" id="userName"></span>
                     </li>
-                    <li class="nav-item" id="registerMenu">
-                        <a class="nav-link" href="register.html">
-                            <i class="fas fa-user-plus me-1"></i>Đăng ký
-                        </a>
-                    </li>
-                    <li class="nav-item" id="userMenu" style="display: none;">
-                        <a class="nav-link" href="#" id="userInfo"></a>
-                    </li>
-                    <li class="nav-item" id="logoutMenu" style="display: none;">
-                        <a class="nav-link" href="#" id="logoutBtn">
-                            <i class="fas fa-sign-out-alt me-1"></i>Đăng xuất
-                        </a>
+                    <li class="nav-item align-content-center">
+                        <button class="btn btn-outline-danger btn-sm" id="logoutBtn">LogOut</button>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
 
-    <div class="hero-section">
-        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
-            </div>
-            
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1600&h=600&fit=crop" class="d-block w-100" alt="Vịnh Hạ Long">
-                    <div class="carousel-caption">
-                        <h1 class="hero-title">Khám Phá <span>Vịnh Hạ Long</span></h1>
-                        <p class="lead">Di sản thiên nhiên thế giới với hàng nghìn đảo đá vôi</p>
-                    </div>
-                </div>
-                
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1600&h=600&fit=crop" class="d-block w-100" alt="Hội An">
-                    <div class="carousel-caption">
-                        <h1 class="hero-title">Phố Cổ <span>Hội An</span></h1>
-                        <p class="lead">Thành phố cổ kính với những ngôi nhà vàng rực rỡ</p>
-                    </div>
-                </div>
-                
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&h=600&fit=crop" class="d-block w-100" alt="Sapa">
-                    <div class="carousel-caption">
-                        <h1 class="hero-title">Ruộng Bậc Thang <span>Sapa</span></h1>
-                        <p class="lead">Vẻ đẹp hùng vĩ của núi rừng Tây Bắc</p>
-                    </div>
-                </div>
-                
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=1600&h=600&fit=crop" class="d-block w-100" alt="Phú Quốc">
-                    <div class="carousel-caption">
-                        <h1 class="hero-title">Đảo Ngọc <span>Phú Quốc</span></h1>
-                        <p class="lead">Thiên đường biển đảo với bãi cát trắng mịn</p>
-                    </div>
-                </div>
-            </div>
-            
-            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-        
-        <div class="container">
+    </nav>
+    <header class="hero-selection d-flex align-items-center justify-content-center">
+        <div class="container text-white text-center">
+            <h1 class="fw-bold display-6">Chào Mừng Đến Với Chúng Tôi!</h1>
+            <p class="mt-3">
+                Thiên đường của bạn ở đây
+            </p>
+
             <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="search-box">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm tour, địa điểm...">
-                            <button class="btn" onclick="searchTours()">
-                                <i class="fas fa-search me-2"></i>Tìm kiếm
-                            </button>
+                <div class="col-md-8 col-lg-6">
+                    <div class="input-group input-group-lg shadow">
+                        <input type="text" class="form-control" placeholder="thích nhập gì thì nhập" id="inputSearch">
+                        <button class="btn btn-primary">
+                            Tìm kiếm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="py-4">
+        <div class="container">
+
+            <div class=" d-flex align-items-center gap-3 flex-wrap">
+                <span class="fw-semibold">
+                    Lọc theo khu vực
+                </span>
+    
+                <div class="btn-group" role="group" aria-label="filter region">
+                    <button class="btn btn-primary btn-sm activate" data-region="all">Tất cả</button>
+                    <button class="btn btn-outline-primary btn-sm" data-region="bac">Miền Bắc</button>
+                    <button class="btn btn-outline-primary btn-sm" data-region="trung">Miền Trung</button>
+                    <button class="btn btn-outline-primary btn-sm" data-region="nam">Miền Nam</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4">
+        <div class="container">
+            <div class="row g-4" id="tourList">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <img src="https://statics.vinpearl.com/dien-tich-dao-phu-quoc-1_1682349924.jpeg" alt="Phú quốc" class="card-img-top">
+                            <span class="badge bg-success position-absolute top-0 start-0 m-2">Miền Trung</span>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">
+                                Tour Phú Quốc
+                            </h5>
+                            <p class="text-muted card-text small mb-2">Trải nghiệm biển xanh - cát trắng - nắng vàng</p>
+                            <span class="text-primary fw-bold ">3.500.000</span>
+                            <div class="row justify-content-between align-items-center w-75 m-auto mt-5">
+                                <button class="col-5 btn btn-outline-primary">
+                                    Yêu thích
+                                </button>
+                                <button class="col-5 btn btn-outline-primary">
+                                    Order
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container">
-        <div class="filter-section">
-            <h5 class="mb-3 mt-3"><i class="fas fa-filter me-2"></i>Lọc theo khu vực</h5>
-            <button class="filter-btn active" data-region="all">Tất cả</button>
-            <button class="filter-btn" data-region="mien-bac">Miền Bắc</button>
-            <button class="filter-btn" data-region="mien-trung">Miền Trung</button>
-            <button class="filter-btn" data-region="mien-nam">Miền Nam</button>
-        </div>
 
-        <div class="row" id="tourList"></div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
+<script>
+    if (currentUser){
+        document.getElementById("userName").innerText = currentUser.name;
+    }
+    document.getElementById("logoutBtn").addEventListener("click", function(e){
+        localStorage.removeItem("currentUser");
+        window.location.href = "login.html";
+    })
+
+    const filterButtons = document.querySelectorAll('[data-region]');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => {
+                b.classList.remove('btn-primary', 'active');
+                b.classList.add('btn-outline-primary');
+            });
+
+            btn.classList.remove('btn-outline-primary');
+            btn.classList.add('btn-primary', 'active');
+
+            const region = btn.dataset.region;
+
+            if (region === "all") {
+                renderTours(allTour);
+            } else {
+                const filtered = allTour.filter(tour => tour.region === region);
+                renderTours(filtered);
+            }
+        });
+
+    })
+
+    const URL_API = "https://6937071cf8dc350aff3320d0.mockapi.io/tours";
+
+    let allTour = [];
+
+    async function fetchTour() {
+        try{
+            const res = await fetch(URL_API);
+            const data = await res.json();
+            allTour = data;
+            renderTour(allTour);
+        }catch{
+            console.error("Lỗi khi lấy data: ", error);
+        }
+    }
+
+    function renderTour(tours){
+        const tourList = document.getElementById('tourList');
+        tourList.innerHTML = "";
+
+        if (tours.length === 0){
+            tourList.innerHTML = '<p class="text-muted text-center">Khong co gia tri hop le</p>';
+            return;
+        }
+
+        tours.forEach(tour => {
+            const col = document.createElement("div");
+            col.className = "col-md-6 col-lg-4";
+
+            col.innerHTML = `
+                <div class="card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <img src="${tour.image}" alt="Phú quốc" class="card-img-top">
+                            <span class="badge bg-success position-absolute top-0 start-0 m-2">Miền Trung</span>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">
+                                ${tour.name}
+                            </h5>
+                            <p class="text-muted card-text small mb-2">Trải nghiệm biển xanh - cát trắng - nắng vàng</p>
+                            <span class="text-primary fw-bold ">${tour.price}</span>
+                            <div class="row justify-content-between align-items-center w-75 m-auto mt-5">
+                                <button class="col-5 btn btn-outline-primary">
+                                    Yêu thích
+                                </button>
+                                <button class="col-5 btn btn-outline-primary">
+                                    Order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            `;
+            tourList.appendChild(col);
+        });
+    }
+
+    function searchTours(keyword) {
+        const lowerKeyword = keyword.toLowerCase();
+
+        const result = allTour.filter(tour =>
+            tour.name.toLowerCase().includes(lowerKeyword) ||
+            tour.location?.toLowerCase().includes(lowerKeyword)
+        );
+
+        renderTours(result);
+    }
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+        const keyword = e.target.value.trim();
+
+        if (keyword === "") {
+            renderTours(allTour); // reset danh sách
+        } else {
+            searchTours(keyword);
+        }
+    });
+    document.addEventListener("DOMContentLoaded", fetchTour);
+</script>
 </html>
